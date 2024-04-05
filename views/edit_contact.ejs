@@ -1,0 +1,13 @@
+<h1>Edit Contact</h1>
+<form action="/contact/<%= contact.name %>/edit" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="<%= contact.name %>">
+    <br>
+    <label for="number">Number:</label>
+    <input type="text" id="number" name="number" value="<%= contact.number %>">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="<%= contact.email %>">
+    <br>
+    <button type="submit">Save Changes</button>
+</form>
