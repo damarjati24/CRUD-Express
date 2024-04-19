@@ -47,16 +47,16 @@ const queryDB = async (text, params) => {
 };
 
 // Fungsi ini bertujuan untuk memvalidasi apakah suatu nama sudah ada dalam database menggunakan .toLowerCase
-const validateName = async (name) => {
+const validateName = async (name, prevName) => {
   const result = await queryDB('SELECT name FROM contact');
   const existingNames = result.rows.map(row => row.name.toLowerCase());
-  return existingNames.includes(name.toLowerCase());
+  return name !== prevName && existingNames.includes(name.toLowerCase());
 };
 
 // Fungsi ini untuk memvalidasi semua input name, mobile, dan email
-const validateInput = async (newContact) => {
+const validateInput = async (newContact, prevName='') => {
   const errorMessage = []
-  const isNameExists = await validateName(newContact.name);
+  const isNameExists = await validateName(newContact.name, prevName);
 
   if (isNameExists) {
     errorMessage.push('Name already exists. Please use a different name.');
@@ -195,7 +195,7 @@ app.post('/contact/:name/edit', async (req, res) => {
 
   // Jika semua input valid, contact bisa di edit
   try {
-    const errorMessage = await validateInput(editedContact);
+    const errorMessage = await validateInput(editedContact, contactName);
     
     if(errorMessage.length == 0) {
       await queryDB('UPDATE contact SET name = $1, mobile = $2, email = $3 WHERE name = $4',
