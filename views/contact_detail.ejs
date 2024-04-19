@@ -1,7 +1,14 @@
-<h1>Contact Detail</h1>
-    <ul>
-        <li>Name: <%= contact.name %></li>
-        <li>Number: <%= contact.number %></li>
-        <li>Email: <%= contact.email %></li>
-    </ul>
-    <a href="/contact">Back to Contacts</a>
+
+   <div class="card" style="width: 300px; margin: 20px;">
+        <div class="card-header">
+            Detail Contact
+        </div>
+    
+        <ul>
+            <li>Name: <%= contact.name %></li>
+            <li>Mobile: <%= contact.mobile %></li>
+            <li>Email: <%= contact.email %></li>
+        </ul>
+    </div>
+
+    <a href="/contact" type="submit" class="btn btn-primary" style="margin-left: 20px;">Back to Contacts</a>

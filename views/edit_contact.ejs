@@ -1,13 +1,36 @@
-<h1>Edit Contact</h1>
-<form action="/contact/<%= contact.name %>/edit" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="<%= contact.name %>">
-    <br>
-    <label for="number">Number:</label>
-    <input type="text" id="number" name="number" value="<%= contact.number %>">
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" value="<%= contact.email %>">
-    <br>
-    <button type="submit">Save Changes</button>
-</form>
+<div class="container">
+    <h1>Edit Contact</h1>
+
+    <ul>
+    <% if (errorMessage) { %>
+        <% errorMessage.forEach(element => { %>
+            <li>
+            <%= element %>
+            </li>
+        <% }) %>
+    <% } %>
+</ul>
+
+    <form action="/contact/<%= contact.name %>/edit" method="POST">
+    
+        <div class="mb-3">
+        <label for="name" class="form-label">Name:</label><br>
+        <input type="text" class="form-control" id="name" name="name" value="<%= contact.name %>"><br><br>
+        </div>
+    
+        <div class="mb-3">
+        <label for="mobile" class="form-label">Mobile:</label><br>
+        <input type="text" class="form-control" id="mobile" name="mobile" value="<%= contact.mobile %>"><br><br>
+        </div>
+
+        <div class="mb-3">
+        <label for="email" class="form-label">Email:</label><br>
+        <input type="email" class="form-control" id="email" name="email" value="<%= contact.email %>"><br><br>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    <form action="/contact" method="get"><br>
+        <button type="submit" class="btn btn-primary">Back to Contact</button>
+    </form>
+</div>

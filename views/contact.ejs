@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Page</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+
 
 <div class="container">
     <h1>Contact page</h1>
     <p>Welcome to contact page!</p>
+
+    
 
     <form action="/form" method="POST" style="display: inline;">
         <button type="submit" class="btn btn-primary">Add Contact</button>
@@ -25,7 +19,7 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Number</th>
+                    <th>Mobile</th>
                     <th>Email</th>
                     <th>Actions</th>
                 </tr>
@@ -34,7 +28,7 @@
                 <% contact.forEach(cont => { %>
                     <tr>
                         <td><%= cont.name %></td>
-                        <td><%= cont.number %></td>
+                        <td><%= cont.mobile %></td>
                         <td><%= cont.email %></td>
                         <td>
                             <!-- Detail Button -->
@@ -46,7 +40,7 @@
                                 <button type="submit" class="btn btn-warning">Edit</button>
                             </form>
                             <!-- Delete Button -->
-                            <form action="/contacts/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this contact?');" style="display: inline;">
+                            <form action="/contact/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this contact?');" style="display: inline;">
                                 <input type="hidden" name="name" value="<%= cont.name %>">
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
@@ -58,7 +52,5 @@
     <% } %>
 </div>
 
-<!-- Bootstrap JS, ideally placed at the end of the body -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+
+
